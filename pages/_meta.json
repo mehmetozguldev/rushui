@@ -1,15 +1,13 @@
 {
   "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
-    "type": "page"
+  "examples": "Examples",
+  "--": {
+    "type": "separator",
+    "title": "Components"
   },
-  "contact": {
-    "title": "Contact ↗",
-    "type": "page",
-    "href": "https://twitter.com/shuding_",
-    "newWindow": true
-  }
+  "navigation": "Navigation",
+  "form": "Form",
+  "table": "Table",
+  "feedback": "Feedback",
+  "sections": "Sections"
 }
