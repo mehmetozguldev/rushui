@@ -1,7 +1,7 @@
 {
-  "name": "nextra-docs-template",
+  "name": "rush-ui",
   "version": "0.0.1",
-  "description": "Nextra docs template",
+  "description": "Rush UI",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shuding/nextra-docs-template.git"
+    "url": "git+https://github.com/mehmetozguldev/rushui.git"
   },
-  "author": "Shu Ding <g@shud.in>",
+  "author": "Mehmet Özgül <mehmetozguldev@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/shuding/nextra-docs-template/issues"
