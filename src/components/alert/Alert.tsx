@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils";
 const alertVariants = cva("p-4 rounded-md", {
   variants: {
     variant: {
-      info: "bg-blue-100 text-blue-800",
-      success: "bg-green-100 text-green-800",
-      warning: "bg-yellow-100 text-yellow-800",
-      error: "bg-red-100 text-red-800",
+      info: "bg-blue-200 text-blue-800",
+      success: "bg-green-200 text-green-800",
+      warning: "bg-yellow-200 text-yellow-800",
+      error: "bg-red-200 text-red-800",
     },
   },
   defaultVariants: {
