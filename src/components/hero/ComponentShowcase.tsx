@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { FaReact, FaVuejs, FaAngular } from "react-icons/fa";
 import { Button } from "../button/Button";
+import { CheckIcon, CopyIcon } from "lucide-react";
 
 interface CodeOptions {
   [key: string]: string;
@@ -36,6 +37,10 @@ const ComponentShowcase: React.FC<ComponentShowcaseProps> = ({
     "preview"
   );
   const [selectedTech, setSelectedTech] = useState<string>("react");
+  const [copyCodeText, setCopyCodeText] = useState<string>("Copy Code");
+  const [copyCodeIcon, setCopyCodeIcon] = useState<React.ReactElement>(
+    <CopyIcon size={16} />
+  );
 
   const techOptions: TechOptions = {
     react: { label: "React", icon: <FaReact /> },
@@ -45,11 +50,12 @@ const ComponentShowcase: React.FC<ComponentShowcaseProps> = ({
 
   const copyCode = (): void => {
     navigator.clipboard.writeText(code[selectedTech]);
-    alert("Code copied to clipboard!");
+    setCopyCodeText("Copied!");
+    setCopyCodeIcon(<CheckIcon size={16} />);
   };
 
   return (
-    <div className="border rounded-lg overflow-hidden shadow-lg p-8">
+    <div className="border rounded-lg overflow-clip shadow-lg p-8">
       <div className="bg-white flex flex-col gap-3">
         <div className="flex items-center gap-3">
           <h2 className="text-2xl font-bold">{title}</h2>
@@ -60,19 +66,23 @@ const ComponentShowcase: React.FC<ComponentShowcaseProps> = ({
         <p className=" text-gray-600">{description}</p>
         <nav className="flex gap-3 ">
           {["preview", "code", "usage"].map((tab) => (
-            <Button
+            <button
               key={tab}
-              variant={activeTab === tab ? "secondary" : "ghost"}
+              className={`px-4 py-2 ${
+                activeTab === tab
+                  ? "bg-white border-b-2 border-blue-500 font-semibold"
+                  : "bg-white text-gray-600 "
+              }`}
               onClick={() => setActiveTab(tab as "preview" | "code" | "usage")}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
-            </Button>
+            </button>
           ))}
         </nav>
       </div>
       <div className="mt-5">
         {activeTab === "preview" && (
-          <div className="preview-area">{component}</div>
+          <div className="p-5 bg-zinc-100 rounded-lg">{component}</div>
         )}
         {activeTab === "code" && (
           <div>
@@ -97,8 +107,13 @@ const ComponentShowcase: React.FC<ComponentShowcaseProps> = ({
                   </button>
                 ))}
               </div>
-              <Button onClick={copyCode} variant="default">
-                Copy Code
+              <Button
+                onClick={copyCode}
+                variant="default"
+                className="flex items-center gap-2"
+              >
+                {copyCodeIcon}
+                {copyCodeText}
               </Button>
             </div>
             <SyntaxHighlighter language="javascript" style={materialDark}>

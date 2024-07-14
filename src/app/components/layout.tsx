@@ -3,7 +3,7 @@
 import React from "react";
 import { Header } from "@/components/header/Header";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 // Define an interface for sidebar items
 interface SidebarItem {
@@ -36,22 +36,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <div>
       <Header />
-      <div className="container flex items-start p-12 gap-12">
-        <aside className="w-72">
+      <div className="container mx-auto flex items-start p-12 gap-12">
+        <aside className="w-1/6">
           <nav className="flex flex-col gap-3">
             <h2 className="font-bold text-lg mb-4">Components</h2>
             {sidebarItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`hover:text-zinc-500 transition ${
-                  router.pathname === item.href
-                    ? "font-semibold text-blue-600"
-                    : ""
+                className={`hover:text-zinc-500 transition text-sm ${
+                  pathname === item.href ? "font-semibold text-blue-600" : ""
                 }`}
               >
                 {item.name}
@@ -59,7 +58,7 @@ export default function RootLayout({
             ))}
           </nav>
         </aside>
-        <div className="w-full">{children}</div>
+        <div className="w-5/6 max-w-5/6 min-w-5/6">{children}</div>
       </div>
     </div>
   );
