@@ -1,4 +1,8 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import { CodeBlock } from "../docs/copy-code/CopyCode";
+import { Button } from "../button/Button";
+import { Code } from "lucide-react";
 
 export const ShowcaseItem = ({
   title,
@@ -7,6 +11,8 @@ export const ShowcaseItem = ({
   title: string;
   children?: React.ReactNode;
 }) => {
+  const [showCode, setShowCode] = useState(false);
+
   return (
     <div className="backdrop-blur-sm bg-white/50 hover:scale-105 hover:z-10  shadow shadow-gray-300 hover:bg-white hover:shadow-indigo-100 hover:shadow-xl border-zinc-200 transition duration-500 rounded-3xl  flex flex-col p-8 gap-5 ">
       <h3 className="font-semibold text-xl text-zinc-700">{title}</h3>

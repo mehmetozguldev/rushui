@@ -11,6 +11,8 @@ import { Card } from "../card/Card";
 import { ChevronDownIcon } from "lucide-react";
 import { Button } from "../button/Button";
 import { Badge } from "../badge/Badge";
+import ComponentShowcase from "./ComponentShowcase";
+import Link from "next/link";
 
 export const HeroSection = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -67,18 +69,19 @@ export const HeroSection = () => {
           </button>
         </div>
       </div>
-
       <div className="container mx-auto py-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        <ShowcaseItem title="Button">
-          <Button>Default Button</Button>
-          <Button variant="gradient" size="lg">
-            Gradient Button
-          </Button>
-          <Button variant="destructive">Destructive Button</Button>
-          <Button variant="outline" size="sm">
-            Small Outline Button
-          </Button>
-        </ShowcaseItem>
+        <Link href="/components/button">
+          <ShowcaseItem title="Button">
+            <Button>Default Button</Button>
+            <Button variant="gradient" size="lg">
+              Gradient Button
+            </Button>
+            <Button variant="destructive">Destructive Button</Button>
+            <Button variant="outline" size="sm">
+              Small Outline Button
+            </Button>
+          </ShowcaseItem>
+        </Link>
         <ShowcaseItem title="Badge">
           <Badge>Default Badge</Badge>
           <Badge variant="secondary">Secondary Badge</Badge>
