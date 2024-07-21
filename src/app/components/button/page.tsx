@@ -7,7 +7,17 @@ export default function page() {
     <ComponentShowcase
       title="Button"
       description="A customizable button component"
-      component={<Button>Click me</Button>}
+      component={
+        <div className="flex items-start gap-3">
+          <Button>Get started</Button>
+          <Button variant="destructive">Get started</Button>
+          <Button variant="gradient">Get started</Button>
+          <Button variant="outline">Get started</Button>
+          <Button variant="secondary">Get started</Button>
+          <Button variant="ghost">Get started</Button>
+          <Button variant="link">Get started</Button>
+        </div>
+      }
       code={{
         react: `"use client";
 import React from "react";

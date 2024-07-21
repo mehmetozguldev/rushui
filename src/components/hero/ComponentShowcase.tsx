@@ -5,7 +5,13 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { FaReact, FaVuejs, FaAngular } from "react-icons/fa";
 import { Button } from "../button/Button";
-import { CheckIcon, CopyIcon } from "lucide-react";
+import {
+  CheckIcon,
+  CopyIcon,
+  EyeIcon,
+  CodeIcon,
+  BookOpenIcon,
+} from "lucide-react";
 
 interface CodeOptions {
   [key: string]: string;
@@ -42,6 +48,12 @@ const ComponentShowcase: React.FC<ComponentShowcaseProps> = ({
     <CopyIcon size={16} />
   );
 
+  const tabOptions = [
+    { key: "preview", label: "Preview", icon: <EyeIcon size={16} /> },
+    { key: "code", label: "Code", icon: <CodeIcon size={16} /> },
+    { key: "usage", label: "Usage", icon: <BookOpenIcon size={16} /> },
+  ];
+
   const techOptions: TechOptions = {
     react: { label: "React", icon: <FaReact /> },
     vue: { label: "Vue", icon: <FaVuejs /> },
@@ -55,7 +67,7 @@ const ComponentShowcase: React.FC<ComponentShowcaseProps> = ({
   };
 
   return (
-    <div className="border rounded-lg overflow-clip shadow-lg p-8">
+    <div className="border rounded-lg overflow-hidden shadow-lg p-8">
       <div className="bg-white flex flex-col gap-3">
         <div className="flex items-center gap-3">
           <h2 className="text-2xl font-bold">{title}</h2>
@@ -65,17 +77,20 @@ const ComponentShowcase: React.FC<ComponentShowcaseProps> = ({
         </div>
         <p className=" text-gray-600">{description}</p>
         <nav className="flex gap-3 ">
-          {["preview", "code", "usage"].map((tab) => (
+          {tabOptions.map((tab) => (
             <button
-              key={tab}
-              className={`px-4 py-2 ${
-                activeTab === tab
-                  ? "bg-white border-b-2 border-blue-500 font-semibold"
-                  : "bg-white text-gray-600 "
+              key={tab.key}
+              className={`px-4 py-2 flex items-center gap-2 ${
+                activeTab === tab.key
+                  ? "bg-white border-b-2 border-blue-500 font-medium"
+                  : "bg-white text-gray-600 hover:text-gray-900"
               }`}
-              onClick={() => setActiveTab(tab as "preview" | "code" | "usage")}
+              onClick={() =>
+                setActiveTab(tab.key as "preview" | "code" | "usage")
+              }
             >
-              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab.icon}
+              {tab.label}
             </button>
           ))}
         </nav>

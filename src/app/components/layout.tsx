@@ -35,7 +35,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const router = useRouter();
   const pathname = usePathname();
 
   return (
@@ -58,7 +57,7 @@ export default function RootLayout({
             ))}
           </nav>
         </aside>
-        <div className="w-5/6 max-w-5/6 min-w-5/6">{children}</div>
+        <div className="w-5/6 overflow-x-hidden ">{children}</div>
       </div>
     </div>
   );
